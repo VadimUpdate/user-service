@@ -1,6 +1,7 @@
 package com.example.userservice.service
 
 import com.example.userservice.domain.User
+import com.example.userservice.mapper.toResponse
 import com.example.userservice.dto.CreateUserRequest
 import com.example.userservice.dto.UserResponse
 import com.example.userservice.repository.UserRepository
@@ -34,13 +35,3 @@ class UserService(
         return user.toResponse()
     }
 }
-
-private fun User.toResponse() =
-    UserResponse(
-        id = id,
-        email = email,
-        fullName = fullName,
-        createdAt = createdAt
-    )
-
-

@@ -1,6 +1,6 @@
-import com.bank.user.dto.CreateUserRequest
-import com.bank.user.repository.UserRepository
-import com.bank.user.service.UserService
+import com.example.userservice.dto.CreateUserRequest
+import com.example.userservice.repository.UserRepository
+import com.example.userservice.service.UserService
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
