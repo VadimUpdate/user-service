@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.spring") version "2.2.21"
     id("org.springframework.boot") version "4.0.1"
     id("io.spring.dependency-management") version "1.1.7"
+    kotlin("plugin.jpa") version "1.8.21"
 }
 
 group = "com.example"
@@ -20,13 +21,41 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-webmvc")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("tools.jackson.module:jackson-module-kotlin")
+
+    /* =========================
+       Spring core
+       ========================= */
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
+
+    /* =========================
+       Persistence
+       ========================= */
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
-    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    /* =========================
+       Kotlin
+       ========================= */
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    /* =========================
+       Observability
+       ========================= */
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    /* =========================
+       Tests
+       ========================= */
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // Unit tests
+    testImplementation("io.mockk:mockk:1.13.10")
+
+    // Integration tests (на будущее)
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
 }
 
 kotlin {
